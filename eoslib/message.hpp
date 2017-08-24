@@ -26,8 +26,12 @@ namespace eos {
       return value;
    }
 
-   using ::requireAuth;
-   using ::requireNotice;
+   void requireNotice(eos::AccountName name) {
+      ::requireNotice(name.value);
+   }
+   void requireAuth(eos::AccountName name) {
+      ::requireAuth(name.value);
+   }
 
    /**
     *  All of the listed accounts must be specified on the message notice list or this method will throw
@@ -39,7 +43,7 @@ namespace eos {
     *  @note message.code is also considered as part of the set of notified accounts
     */
    template<typename... Accounts>
-   void requireNotice( AccountName name, Accounts... accounts ){
+   void requireNotice( eos::AccountName name, Accounts... accounts ){
       requireNotice( name );
       requireNotice( accounts... );
    }

@@ -64,7 +64,9 @@ namespace  eos {
       operator uint64_t()const { return value; }
 
       friend bool operator==( const Name& a, const Name& b ) { return a.value == b.value; }
-      AccountName value = 0;
+      friend bool operator==( const Name& a, uint64_t b) { return a.value == b; }
+      friend bool operator==( uint64_t a, const Name& b) { return a == b.value; }
+      uint64_t value = 0;
    };
 
 
@@ -77,5 +79,7 @@ namespace  eos {
    template<typename T> struct remove_reference<T&>       { typedef T type; };
    template<typename T> struct remove_reference<const T&> { typedef T type; };
    ///@}
+
+   using AccountName = Name;
 
 } // namespace eos

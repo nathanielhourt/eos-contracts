@@ -4,6 +4,7 @@ namespace exchange {
 
    using currency::CurrencyTokens;
    using EosTokens = eos::Tokens;
+   using eos::AccountName;
 
    struct OrderID {
       AccountName name    = 0;

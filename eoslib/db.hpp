@@ -15,12 +15,12 @@ struct Db
    }
 
    template<typename T>
-   static bool get( AccountName scope, TableName table, uint64_t key, T& value ){
+   static bool get( eos::AccountName scope, TableName table, uint64_t key, T& value ){
       return get( scope, currentCode(), table, key, value );
    }
 
    template<typename T>
-   static bool get( AccountName scope, AccountName code, TableName table, uint64_t key, T& result ) {
+   static bool get( eos::AccountName scope, eos::AccountName code, TableName table, uint64_t key, T& result ) {
       auto read = load_i64( scope, code, table, key, &result, sizeof(result) );
       return read > 0;
    }
@@ -94,10 +94,10 @@ struct table_impl<sizeof(uint128_t),sizeof(uint128_t)> {
     static int32_t remove( uint64_t scope, uint64_t table, const void* data ) {
        return remove_i128i128( scope, table, data );
     }
-    static int32_t store( AccountName scope, TableName table, const void* data, uint32_t len ) {
+    static int32_t store( eos::AccountName scope, TableName table, const void* data, uint32_t len ) {
        return store_i128i128( scope, table, data, len );
     }
-    static int32_t update( AccountName scope, TableName table, const void* data, uint32_t len ) {
+    static int32_t update( eos::AccountName scope, TableName table, const void* data, uint32_t len ) {
        return update_i128i128( scope, table, data, len );
     }
 };
@@ -129,10 +129,10 @@ struct table_impl<sizeof(uint64_t),0> {
     static int32_t remove( uint64_t scope, uint64_t table, const void* data ) {
        return remove_i64( scope, table, (uint64_t*)data);
     }
-    static int32_t store( AccountName scope, TableName table, const void* data, uint32_t len ) {
+    static int32_t store( eos::AccountName scope, TableName table, const void* data, uint32_t len ) {
        return store_i64( scope, table, data, len );
     }
-    static int32_t update( AccountName scope, TableName table, const void* data, uint32_t len ) {
+    static int32_t update( eos::AccountName scope, TableName table, const void* data, uint32_t len ) {
        return update_i64( scope, table, data, len );
     }
 };

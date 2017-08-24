@@ -10,6 +10,7 @@
 #endif
 
 namespace TOKEN_NAME {
+   using eos::AccountName;
 
    typedef eos::token<uint64_t,N(currency)> CurrencyTokens;
 

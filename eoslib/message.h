@@ -47,17 +47,17 @@ extern "C" {
    /**
     *  Verifies that @ref name exists in the set of notified accounts on a message. Throws if not found
     */
-   void        requireNotice( AccountName );
+   void        requireNotice( uint64_t );
 
    /**
     *  Verifies that @ref name exists in the set of provided auths on a message. Throws if not found
     */
-   void        requireAuth( AccountName name );
+   void        requireAuth( uint64_t name );
 
    /**
     *  @return the account which specifes the code that is being run
     */
-   AccountName currentCode();
+   uint64_t currentCode();
 
 
    /**
